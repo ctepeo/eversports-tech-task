@@ -1,2 +1,1 @@
-export class ListDto {
-}
+export class ListDto {}

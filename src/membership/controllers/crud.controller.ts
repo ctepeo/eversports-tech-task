@@ -1,19 +1,14 @@
-import {
-    Body,
-    Controller,
-    Post,
-} from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
-import {CreateDto} from '../dto';
-
+import { CreateDto } from '../dto';
 
 @Controller()
 export class CrudController {
-    @Post() // POST /membership
-    public async create(@Body() body: CreateDto): Promise<{ hello: string }> {
-        console.log({
-            body
-        });
-        return {hello: 'world'};
-    }
+  @Post() // POST /membership
+  public async create(@Body() body: CreateDto): Promise<{ hello: string }> {
+    console.log({
+      body,
+    });
+    return { hello: 'world' };
+  }
 }
