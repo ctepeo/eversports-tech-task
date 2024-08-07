@@ -36,7 +36,10 @@ export class MembershipController {
   @HttpCode(201)
   @Post() // POST /membership
   @UsePipes(new ValidationPipe({ transform: true }))
-  public async create(@Body() body: CreateMembershipRequestData): Promise<any> {
+  public async create(@Body() body: CreateMembershipRequestData): Promise<{
+    membership: Membership;
+    membershipPeriods: MembershipPeriod[];
+  }> {
     //  extended validation logic goes here
     if (body.recurringPrice > 100 && body.paymentMethod === 'cash') {
       throw new BadRequestException('cashPriceBelow100');
@@ -96,7 +99,7 @@ export class MembershipController {
     //   in a perfect world we need to do it in a service just before storing
     let lastMembershipPeriodId = await MembershipService.getLatestMembershipPeriodId();
 
-    for (let i: number = 0; i < body.billingPeriods; i++) {
+    for (let i = 0; i < body.billingPeriods; i++) {
       const start: Date = periodStart;
       const end: Date = new Date(periodStart);
       end.setMonth(end.getMonth() + (body.billingInterval === 'monthly' ? 1 : 12));
