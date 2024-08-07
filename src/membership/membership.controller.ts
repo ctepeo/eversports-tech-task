@@ -98,8 +98,8 @@ export class MembershipController {
 
     for (let i: number = 0; i < body.billingPeriods; i++) {
       const start: Date = periodStart;
-      const end: Date = periodStart;
-      end.setMonth(end.getMonth() + (body.billingInterval === 'monthly' ? 1 : 12) * (i + 1));
+      const end: Date = new Date(periodStart);
+      end.setMonth(end.getMonth() + (body.billingInterval === 'monthly' ? 1 : 12));
 
       lastMembershipPeriodId++;
 
