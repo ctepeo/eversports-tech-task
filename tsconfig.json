@@ -31,7 +31,8 @@
     // https://github.com/Microsoft/TypeScript/issues/2577
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
   "include": ["src/**/*", "test/**/*"],
   "exclude": ["node_modules"]

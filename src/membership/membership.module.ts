@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 
-import * as controllers from './controllers';
+import { MembershipController } from './membership.controller';
+import { MembershipService } from './membership.service';
 
 @Module({
   imports: [],
-  controllers: Object.values(controllers),
-  providers: [],
+  controllers: [MembershipController],
+  providers: [MembershipService],
 })
 export class MembershipModule {}
