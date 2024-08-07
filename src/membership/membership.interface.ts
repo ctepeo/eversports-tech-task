@@ -14,7 +14,7 @@ export interface Membership {
   recurringPrice: number; // price the user has to pay for every period
   validFrom: string; // start of the validity
   validUntil: string; // end of the validity
-  assignedBy: string; // the user that assigned the membership
+  assignedBy?: string; // the user that assigned the membership
   state: ValueOf<MembershipState>; // indicates the state of the membership
   paymentMethod: string | null; // which payment method will be used to pay for the periods
   billingInterval: string; // the interval unit of the periods
@@ -23,6 +23,7 @@ export interface Membership {
 
 export interface MembershipPeriod {
   id: number; // the id of the period
+  uuid: string; // the uuid of the period
   membershipId: number; // membership the period is attached to
   start: string; // indicates the start of the period
   end: string; // indicates the end of the period
