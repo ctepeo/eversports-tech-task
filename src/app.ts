@@ -1,4 +1,4 @@
-import { Logger as NestLogger } from '@nestjs/common';
+import { Logger as NestLogger, ValidationPipe } from '@nestjs/common';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { FastifyAdapter, NestFastifyApplication } from '@nestjs/platform-fastify';
 
@@ -14,6 +14,9 @@ async function bootstrap(): Promise<string> {
 
   // Middlewares
   middleware(app);
+
+  // Validation
+  app.useGlobalPipes(new ValidationPipe());
 
   // Exceptions handler
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));

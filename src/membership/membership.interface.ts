@@ -1,3 +1,11 @@
+export enum MembershipState {
+  ACTIVE = 'active',
+  PENDING = 'pending',
+  EXPIRED = 'expired',
+}
+
+type ValueOf<T> = T[keyof T];
+
 export interface Membership {
   id: number; // the id of the membership
   uuid: string; // the uuid of the membership
@@ -7,7 +15,7 @@ export interface Membership {
   validFrom: string; // start of the validity
   validUntil: string; // end of the validity
   assignedBy: string; // the user that assigned the membership
-  state: string; // indicates the state of the membership
+  state: ValueOf<MembershipState>; // indicates the state of the membership
   paymentMethod: string | null; // which payment method will be used to pay for the periods
   billingInterval: string; // the interval unit of the periods
   billingPeriods: number; // the number of periods the membership has
